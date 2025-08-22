@@ -2,7 +2,6 @@ let win = this;
 const url = window.location.href;
 const dato = url.slice(url.lastIndexOf("/") + 1);
 const part = dato.slice(0, 3);
-
 const faqs = document.querySelector(".faqs");
 const request = document.querySelector(".request");
 const acceso = document.querySelector(".acceso");
@@ -11,12 +10,14 @@ const comercios = document.querySelector(".comercios");
 const concesionarios = document.querySelector(".concesionarios");
 const ecommerce = document.querySelector(".ecommerce");
 const body = document.querySelector("body section:nth-child(2)");
+
 window.addEventListener("resize", () => {
   inicio();
 });
 document.addEventListener("DOMContentLoaded", () => {
   inicio();
 });
+
 const inicio = () => {
   if (win.innerWidth > 1076) {
     if (part == "par") {
@@ -25,23 +26,43 @@ const inicio = () => {
   }
 
   if (part == "par") {
-    faqs.style = "display:none";
+    faqs.style = "display:none;";
     paraTi.classList.add("active");
+    // Mostrar elementos específicos para "Para ti"
+    faqs.style.display = "block";
+    request.style.display = "block";
+    acceso.style.display = "block";
   }
+
   if (part == "com") {
-    acceso.style = "display:none";
-    request.style = "display:none";
+    acceso.style = "display:none;";
+    request.style = "display:none;";
     comercios.classList.add("active");
+    // Mostrar elementos específicos para "Comercios"
+    faqs.style.display = "block";
+    request.style.display = "none";
+    acceso.style.display = "none";
   }
+
   if (part == "con") {
-    acceso.style = "display:none";
-    request.style = "display:none";
+    acceso.style = "display:none;";
+    request.style = "display:none;";
     concesionarios.classList.add("active");
+    // Mostrar elementos específicos para "Concesionarios"
+    faqs.style.display = "block";
+    request.style.display = "none";
+    acceso.style.display = "none";
   }
+
   if (part == "eco") {
-    request.style = "display:none";
+    request.style = "display:none;";
     ecommerce.classList.add("active");
+    // Mostrar elementos específicos para "eCommerce"
+    faqs.style.display = "block";
+    request.style.display = "none";
+    acceso.style.display = "block";
   }
+
   if (win.innerWidth <= 1076) {
     const heightDevice = win.innerHeight - 128;
     document.querySelector(".menu-mega__mobile").style =
@@ -53,6 +74,7 @@ const btnMobile = document.querySelector(".menu-mobile-toggle");
 const menuHeader = document.querySelector(".header-item-left");
 const megaSubMobile = document.querySelectorAll(".menu-sub-has-children_mob");
 const backMobile = document.querySelector(".back");
+
 btnMobile.addEventListener("click", (e) => {
   menuHeader.classList.toggle("active");
   btnMobile.classList.toggle("active");
@@ -66,9 +88,11 @@ megaSubMobile.forEach((item) => {
     item.classList.toggle("active");
   });
 });
+
 const reload = () => {
   window.location.reload();
 };
+
 backMobile.addEventListener("click", (e) => {
   megaSubMobile.forEach((item) => {
     item.classList.contains("active") == true
@@ -77,18 +101,21 @@ backMobile.addEventListener("click", (e) => {
   });
 });
 
-//accordion
+// Accordion
 const accordions = document.querySelectorAll(".accordion");
+
 const openAccordion = (accordion) => {
   const content = accordion.querySelector(".accordion__content");
   accordion.classList.add("accordion__active");
   content.style.maxHeight = content.scrollHeight + "px";
 };
+
 const closeAccordion = (accordion) => {
   const content = accordion.querySelector(".accordion__content");
   accordion.classList.remove("accordion__active");
   content.style.maxHeight = null;
 };
+
 accordions.forEach((accordion) => {
   const intro = accordion.querySelector(".accordion__intro");
   const content = accordion.querySelector(".accordion__content");
@@ -101,3 +128,4 @@ accordions.forEach((accordion) => {
     }
   };
 });
+
